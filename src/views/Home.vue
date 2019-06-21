@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <main class="home container">
+    <h1 class="home__title">Youtube Video List</h1>
+    <VideoList/>
+  </main>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import VideoList from '@/components/VideoList.vue';
 
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
-    HelloWorld,
+    VideoList,
   },
 };
 </script>
+
+<style lang="scss">
+.home {
+  &__title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media (max-width: 425px) {
+      font-size: 28px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}
+</style>

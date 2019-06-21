@@ -1,0 +1,69 @@
+<template>
+  <div class="item__box preview">
+    <img class="preview__img" :src="info.preview" :alt="info.title" @click="hidePreview">
+    <p class="preview__title">{{ info.title }}</p>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'VideoPreview',
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
+  data: () => ({
+    info: {
+      preview: '',
+      title: '',
+    },
+  }),
+  methods: {
+    hidePreview() {
+      this.$emit('toggleShow', this.id);
+    },
+  },
+  async created() {
+    const key = process.env.VUE_APP_API_KEY_YOUTUBE;
+    const target = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${
+      this.id
+    }&key=${key}&fields=items(snippet(title,thumbnails))`;
+
+    const res = await fetch(target);
+    const resJson = await res.json();
+    const { snippet } = resJson.items[0];
+    this.info.preview = snippet.thumbnails.high.url;
+    this.info.title = snippet.title;
+  },
+};
+</script>
+
+<style lang="scss">
+.preview {
+  &:hover {
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: 0;
+    padding: 5px 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: opacity 0.3s ease;
+  }
+}
+</style>
