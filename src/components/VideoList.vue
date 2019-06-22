@@ -2,7 +2,7 @@
   <section class="video">
     <p v-if="!hasVideo" class="video__list video__list--empty">No video to show</p>
     <ul v-else class="video__list">
-      <li v-for="id in partArrayVideoId" :key="id" class="video__item">
+      <li v-for="id in partArrayVideoId" :key="id" class="video__item item">
         <VideoItemLazy :id="id" :status="id === isPlay" @isPlay="setStatus"/>
       </li>
     </ul>

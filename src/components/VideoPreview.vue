@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'VideoPreview',
   props: {
@@ -31,11 +33,23 @@ export default {
       this.id
     }&key=${key}&fields=items(snippet(title,thumbnails))`;
 
-    const res = await fetch(target);
-    const resJson = await res.json();
-    const { snippet } = resJson.items[0];
-    this.info.preview = snippet.thumbnails.high.url;
-    this.info.title = snippet.title;
+    /** *
+     * К сожалению у меня так и не получилось уговорить IE11
+     * понимать fetch поэтому я решила использовать axios
+     * я знаю, что это не лучшая практика, но так как нам нужно
+     * делать только один запрос, я использую его непосредственно
+     * в компоненте
+     */
+
+    axios
+      .get(target)
+      .then((response) => {
+        const { snippet } = response.data.items[0];
+        this.info.preview = snippet.thumbnails.high.url;
+        this.info.title = snippet.title;
+      })
+      // eslint-disable-next-line
+      .catch(e => console.log(e));
   },
 };
 </script>

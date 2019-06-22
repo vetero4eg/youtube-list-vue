@@ -1,9 +1,7 @@
 <template>
-  <div class="item">
-    <transition name="toggle">
-      <component :is="status" :id="id" @toggleShow="startVideo"></component>
-    </transition>
-  </div>
+  <transition name="toggle">
+    <component :is="status" :id="id" @toggleShow="startVideo"></component>
+  </transition>
 </template>
 
 <script>
@@ -52,7 +50,6 @@ export default {
 </script>
 
 <style lang="scss">
-.item,
 .item__box {
   position: absolute;
   top: 0;
