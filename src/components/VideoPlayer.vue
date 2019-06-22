@@ -23,7 +23,7 @@ export default {
     url: '',
   }),
   beforeMount() {
-    this.url = `http://www.youtube.com/embed/${this.id}?autoplay=1&muted=1`;
+    this.url = `https://www.youtube.com/embed/${this.id}?autoplay=1&muted=1`;
   },
   beforeDestroy() {},
 };

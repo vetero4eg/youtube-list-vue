@@ -14,6 +14,7 @@
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.6.5",
     "current-script-polyfill": "^1.0.0",
+    "firebase": "^6.1.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
