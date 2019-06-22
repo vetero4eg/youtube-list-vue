@@ -26,7 +26,7 @@ export default {
   }),
   methods: {
     checkCorrectlyId(id) {
-      return /^[a-zA-Z0-9-]{11,}$/.test(id);
+      return /^[a-zA-Z0-9-]{11}$/.test(id);
     },
     setStatus(eventId) {
       this.isPlay = eventId;
