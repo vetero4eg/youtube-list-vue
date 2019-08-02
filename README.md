@@ -11,7 +11,7 @@ add your key for Google API here
 ```
 
 ```
-/src/components/VideoPreview.vue#L29
+/src/components/VideoPreview.vue#L31
 
 ```
 
