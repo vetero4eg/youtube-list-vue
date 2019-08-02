@@ -3,7 +3,7 @@
     <p v-if="!hasVideo" class="video__list video__list--empty">No video to show</p>
     <ul v-else class="video__list">
       <li v-for="id in partArrayVideoId" :key="id" class="video__item item">
-        <VideoItemLazy :id="id" :status="id === isPlay" @isPlay="setStatus"/>
+        <VideoItemLazy :id="id" :start="id === isPlay" @isPlay="setStatus"/>
       </li>
     </ul>
     <button v-if="showMoreButton" class="video__more" @click="showMore(countMore)">More</button>

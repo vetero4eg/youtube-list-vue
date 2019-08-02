@@ -32,24 +32,16 @@ export default {
     const target = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${
       this.id
     }&key=${key}&fields=items(snippet(title,thumbnails))`;
+    let response;
 
-    /** *
-     * К сожалению у меня так и не получилось уговорить IE11
-     * понимать fetch поэтому я решила использовать axios
-     * я знаю, что это не лучшая практика, но так как нам нужно
-     * делать только один запрос, я использую его непосредственно
-     * в компоненте
-     */
-
-    axios
-      .get(target)
-      .then((response) => {
-        const { snippet } = response.data.items[0];
-        this.info.preview = snippet.thumbnails.high.url;
-        this.info.title = snippet.title;
-      })
-      // eslint-disable-next-line
-      .catch(e => console.log(e));
+    try {
+      response = await axios.get(target);
+      const { snippet } = response.data.items[0];
+      this.info.preview = snippet.thumbnails.high.url;
+      this.info.title = snippet.title;
+    } catch (e) {
+      console.log(e);
+    }
   },
 };
 </script>

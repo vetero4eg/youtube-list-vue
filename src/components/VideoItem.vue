@@ -19,6 +19,10 @@ export default {
       type: String,
       required: true,
     },
+    start: {
+      type: Boolean,
+      required: false,
+    },
   },
   data: () => ({
     play: false,
@@ -34,7 +38,7 @@ export default {
   },
   computed: {
     status() {
-      return this.$attrs.status && this.play
+      return this.start && this.play
         ? 'VideoPlayerLazy'
         : 'VideoPreviewLazy';
     },
