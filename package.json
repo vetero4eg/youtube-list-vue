@@ -10,7 +10,7 @@
   "dependencies": {
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.6.5",
     "current-script-polyfill": "^1.0.0",
